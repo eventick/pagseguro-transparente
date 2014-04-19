@@ -4,7 +4,7 @@ module PagSeguro
 
     validates_presence_of :address
     validates_inclusion_of :type_id, in: %w( 1 2 3 ), allow_blank: true
-    validates_numericality_of :cost, greater_than: 0
+    validates_numericality_of :cost, greater_than: 0, allow_nil: true
 
     # Set the shipping type
     attr_accessor :type_id
