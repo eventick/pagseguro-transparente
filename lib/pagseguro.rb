@@ -26,6 +26,8 @@ require "pagseguro/shipping"
 require "pagseguro/installment"
 require "pagseguro/exceptions"
 
+I18n.enforce_available_locales = false
+
 module PagSeguro
   class << self
     # Primary e-mail associated with this account.

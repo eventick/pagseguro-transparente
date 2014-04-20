@@ -1,6 +1,10 @@
 module PagSeguro
   class Sender
     include ActiveModel::Validations
+    extend Forwardable
+
+    def_delegators :document, :value
+    def_delegators :phone, :area_code, :number
 
     validates_presence_of :email, :name, :hash_id, :document, :phone
 

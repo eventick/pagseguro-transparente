@@ -34,6 +34,8 @@
         1,
         null,
         1,
+        null,
+        1,
         1,
         null,
         1,
@@ -672,6 +674,10 @@
         1,
         1,
         1,
+        1,
+        null,
+        1,
+        1,
         null,
         1,
         null,
@@ -861,6 +867,10 @@
       ],
       "/Users/cirdes/workspace/pagseguro-transparente/lib/pagseguro/shipping.rb": [
         1,
+        1,
+        1,
+        1,
+        null,
         1,
         1,
         null,
@@ -1660,6 +1670,6 @@
         null
       ]
     },
-    "timestamp": 1397741301
+    "timestamp": 1397955598
   }
 }
