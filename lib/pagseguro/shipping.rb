@@ -1,6 +1,10 @@
 module PagSeguro
   class Shipping
     include ActiveModel::Validations
+    extend Forwardable
+
+    def_delegators :address, :country, :postal_code, :street, :number
+    def_delegators :address, :complement, :district, :city, :state
 
     validates_presence_of :address
     validates_inclusion_of :type_id, in: %w( 1 2 3 ), allow_blank: true
