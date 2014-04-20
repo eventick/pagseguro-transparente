@@ -18,7 +18,7 @@ describe PagSeguro::Transaction do
     transaction = PagSeguro::Transaction.new(options)
     transaction.sender = sender
     transaction.shipping = shipping
-    transaction.items = [PagSeguro::Item.new(1, 'Ingresso Teste', 2, 1)]
+    transaction.items = [PagSeguro::Item.new(id: 1, description: 'Ingresso Teste', amount: 2, quantity: 1)]
     transaction
   end
 

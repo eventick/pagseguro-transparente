@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe PagSeguro::Item do
-  let(:item) { PagSeguro::Item.new('id', 'my item', 10) }
+  let(:item) { PagSeguro::Item.new(id: 'id', description: 'my item', amount: 10) }
   subject { item }
 
   it { should respond_to(:id) }

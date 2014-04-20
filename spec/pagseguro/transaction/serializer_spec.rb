@@ -19,8 +19,8 @@ describe PagSeguro::Transaction::Serializer do
     transaction.shipping = shipping
     transaction.credit_card = credit_card
     transaction.bank = bank
-    transaction.items = [PagSeguro::Item.new('0001', 'Notebook Prata', '24300.00', '1') ,
-    PagSeguro::Item.new('0002', 'Notebook Rosa', '25600.00', '2') ]
+    transaction.items = [PagSeguro::Item.new(id: '0001', description: 'Notebook Prata', amount: '24300.00', quantity: '1') ,
+    PagSeguro::Item.new(id: '0002', description: 'Notebook Rosa', amount: '25600.00', quantity: '2') ]
     transaction
   end
 

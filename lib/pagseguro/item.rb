@@ -19,11 +19,11 @@ module PagSeguro
     # Defaults to 1.
     attr_accessor :quantity
 
-    def initialize(id, description, amount, quantity = 1)
-      @id = id
-      @description = description
-      @amount = amount
-      @quantity = quantity
+    def initialize(options = {})
+      @id = options[:id]
+      @description = options[:description]
+      @amount = options[:amount]
+      @quantity = options[:quantity] || 1
     end
   end
 end
