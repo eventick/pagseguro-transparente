@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+
+rvm:
+  - jruby
+  - 2.0.0
+  - 2.1.1
+
+script: 'bundle exec rake'
+
+notifications:
+  email:
+    recipients:
+      - cirdes@eventick.com.br
+    on_failure: change
+    on_success: never
