@@ -41,9 +41,9 @@ pagseguro_session = PagSeguro::Session.new
 
 ##Criando uma transação
 ~~~.ruby
-transaction = PagSeguro::Transaction.new(notification_url: 'www.eventick.com.br', payment_method: 'boleto', reference: '1')
+payment = PagSeguro::Payment.new(notification_url: 'www.eventick.com.br', payment_method: 'boleto', reference: '1')
 items = [PagSeguro::Item.new(1, 'Ingresso Teste', 2, 1)]
-transaction.items = items
+payment.items = items
 
 
 phone = PagSeguro::Phone.new('81', '97550129')
@@ -53,15 +53,15 @@ sender = PagSeguro::Sender.new(email: 'cirdes@gmail.com', name: 'Cirdes Henrique
 sender.phone = phone
 sender.document = document
 
-transaction.sender = sender
+payment.sender = sender
 
 address = PagSeguro::Address.new(postal_code: '52050040', street: 'Rua Teles Junior', number: '475', complement: '301', district: 'rosarinho', city: 'Recife', state: 'PE')
 shipping = PagSeguro::Shipping.new
 shipping.address = address
 
-transaction.shipping = shipping
+payment.shipping = shipping
 
-response = transaction.register
+response = payment.register
 
 response.payment_link
 ~~~

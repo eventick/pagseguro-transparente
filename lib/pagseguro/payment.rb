@@ -1,5 +1,5 @@
 module PagSeguro
-  class Transaction < Request
+  class Payment < Request
     include ActiveModel::Validations
 
     validates_presence_of :currency, :payment_method, :items, :sender, :shipping

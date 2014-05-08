@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe PagSeguro::Transaction do
-  subject { transaction }
+describe PagSeguro::Payment do
+  subject { payment }
 
   let(:options) {
     {
@@ -14,12 +14,12 @@ describe PagSeguro::Transaction do
 
   let(:payment_method) { 'boleto' }
 
-  let(:transaction) do
-    transaction = PagSeguro::Transaction.new(options)
-    transaction.sender = sender
-    transaction.shipping = shipping
-    transaction.items = [PagSeguro::Item.new(id: 1, description: 'Ingresso Teste', amount: 2, quantity: 1)]
-    transaction
+  let(:payment) do
+    payment = PagSeguro::Payment.new(options)
+    payment.sender = sender
+    payment.shipping = shipping
+    payment.items = [PagSeguro::Item.new(id: 1, description: 'Ingresso Teste', amount: 2, quantity: 1)]
+    payment
   end
 
 

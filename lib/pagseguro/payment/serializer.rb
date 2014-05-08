@@ -1,38 +1,38 @@
 module PagSeguro
-  class Transaction
+  class Payment
     class Serializer
       # The payment request that will be serialized.
-      attr_reader :transaction
+      attr_reader :payment
 
-      def initialize(transaction)
-        @transaction = transaction
+      def initialize(payment)
+        @payment = payment
       end
 
       def to_params
-        raise InvalidTransaction, transaction.errors.messages unless transaction.valid?
+        raise InvalidTransaction, payment.errors.messages unless payment.valid?
 
         params[:email] = PagSeguro.email
         params[:token] = PagSeguro.token
 
 
-        params[:notificationURL] = transaction.notification_url
-        params[:currency] = transaction.currency
-        params[:paymentMethod] = transaction.payment_method
-        params[:paymentMode] = transaction.payment_mode
-        params[:reference] = transaction.reference
-        params[:extraAmount] = transaction.extra_amount
+        params[:notificationURL] = payment.notification_url
+        params[:currency] = payment.currency
+        params[:paymentMethod] = payment.payment_method
+        params[:paymentMode] = payment.payment_mode
+        params[:reference] = payment.reference
+        params[:extraAmount] = payment.extra_amount
 
-        transaction.items.each.with_index(1) do |item, index|
+        payment.items.each.with_index(1) do |item, index|
           serialize_item(item, index)
         end
 
-        serialize_sender(transaction.sender)
-        serialize_bank(transaction.bank)
-        serialize_credit_card(transaction.credit_card)
-        serialize_shipping(transaction.shipping)
+        serialize_sender(payment.sender)
+        serialize_bank(payment.bank)
+        serialize_credit_card(payment.credit_card)
+        serialize_shipping(payment.shipping)
 
 
-        params[:receiverEmail] = transaction.receiver_email if transaction.receiver_email
+        params[:receiverEmail] = payment.receiver_email if payment.receiver_email
 
         params.delete_if {|key, value| value.nil? }
 

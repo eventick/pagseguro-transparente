@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe PagSeguro::Transaction::Serializer do
-  let(:params) { PagSeguro::Transaction::Serializer.new(transaction).to_params }
+describe PagSeguro::Payment::Serializer do
+  let(:params) { PagSeguro::Payment::Serializer.new(payment).to_params }
   subject { params }
 
   let(:options) {
@@ -13,15 +13,15 @@ describe PagSeguro::Transaction::Serializer do
     }
   }
 
-  let(:transaction) do
-    transaction = PagSeguro::Transaction.new(options)
-    transaction.sender = sender
-    transaction.shipping = shipping
-    transaction.credit_card = credit_card
-    transaction.bank = bank
-    transaction.items = [PagSeguro::Item.new(id: '0001', description: 'Notebook Prata', amount: '24300.00', quantity: '1') ,
+  let(:payment) do
+    payment = PagSeguro::Payment.new(options)
+    payment.sender = sender
+    payment.shipping = shipping
+    payment.credit_card = credit_card
+    payment.bank = bank
+    payment.items = [PagSeguro::Item.new(id: '0001', description: 'Notebook Prata', amount: '24300.00', quantity: '1') ,
     PagSeguro::Item.new(id: '0002', description: 'Notebook Rosa', amount: '25600.00', quantity: '2') ]
-    transaction
+    payment
   end
 
   let(:document) { PagSeguro::Document.new('22111944785') }
