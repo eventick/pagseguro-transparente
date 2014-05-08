@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     class Phone
       attr_reader :phone
 

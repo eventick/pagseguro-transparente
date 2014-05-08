@@ -62,7 +62,7 @@ module PagSeguro
     def register
       # raise 'An error' unless self.valid?
       params = Serializer.new(self).to_params
-      PagSeguro::Notification.new post('/transactions', params)
+      PagSeguro::Transaction.new post('/transactions', params)
     end
 
     def initialize(options = {})

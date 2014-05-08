@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe PagSeguro::Notification::PaymentMethod do
+describe PagSeguro::Transaction::PaymentMethod do
   let(:xml) { MultiXml.parse(xml_file) }
 
   let(:payment_method) do
-    PagSeguro::Notification::PaymentMethod.new(xml['paymentMethod'])
+    PagSeguro::Transaction::PaymentMethod.new(xml['paymentMethod'])
   end
 
   subject { payment_method }

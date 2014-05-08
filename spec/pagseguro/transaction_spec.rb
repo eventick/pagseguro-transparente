@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe PagSeguro::Notification do
+describe PagSeguro::Transaction do
   let(:xml) { MultiXml.parse(xml_file) }
 
-  let(:response) { PagSeguro::Notification.new(xml) }
+  let(:response) { PagSeguro::Transaction.new(xml) }
 
   subject { response }
 
@@ -20,10 +20,10 @@ describe PagSeguro::Notification do
   its(:net_amount) { should eq('49900.50') }
   its(:extra_amount) { should eq('0.00') }
   its(:installment_count) { should eq("1") }
-  its(:payment_method) { should be_a_kind_of(PagSeguro::Notification::PaymentMethod) }
-  its(:items) { should be_a_kind_of(PagSeguro::Notification::Items) }
-  its(:sender) { should be_a_kind_of(PagSeguro::Notification::Sender) }
-  its(:shipping) { should be_a_kind_of(PagSeguro::Notification::Shipping) }
+  its(:payment_method) { should be_a_kind_of(PagSeguro::Transaction::PaymentMethod) }
+  its(:items) { should be_a_kind_of(PagSeguro::Transaction::Items) }
+  its(:sender) { should be_a_kind_of(PagSeguro::Transaction::Sender) }
+  its(:shipping) { should be_a_kind_of(PagSeguro::Transaction::Shipping) }
 
   let(:xml_file) {
     "<transaction>

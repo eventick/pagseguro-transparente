@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     class PaymentMethod
       attr_reader :payment_method
 

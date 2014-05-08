@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe PagSeguro::Notification::Address do
+describe PagSeguro::Transaction::Address do
   let(:xml) { MultiXml.parse(xml_file) }
 
   let(:address) do
-    PagSeguro::Notification::Address.new(xml['address'])
+    PagSeguro::Transaction::Address.new(xml['address'])
   end
 
   subject { address }

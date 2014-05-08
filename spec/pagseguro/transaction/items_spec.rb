@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe PagSeguro::Notification::Items do
+describe PagSeguro::Transaction::Items do
   let(:xml) { MultiXml.parse(xml_file) }
 
   let(:items) do
-    PagSeguro::Notification::Items.new(xml['items'], '2')
+    PagSeguro::Transaction::Items.new(xml['items'], '2')
   end
 
   subject { items }

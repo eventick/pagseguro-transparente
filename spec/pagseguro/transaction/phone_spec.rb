@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe PagSeguro::Notification::Phone do
+describe PagSeguro::Transaction::Phone do
   let(:xml) { MultiXml.parse(xml_file) }
 
   let(:phone) do
-    PagSeguro::Notification::Phone.new(xml['phone'])
+    PagSeguro::Transaction::Phone.new(xml['phone'])
   end
 
   subject { phone }

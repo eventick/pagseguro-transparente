@@ -1,17 +1,17 @@
 require "spec_helper"
 
-describe PagSeguro::Notification::Sender do
+describe PagSeguro::Transaction::Sender do
   let(:xml) { MultiXml.parse(xml_file) }
 
   let(:sender) do
-    PagSeguro::Notification::Sender.new(xml['sender'])
+    PagSeguro::Transaction::Sender.new(xml['sender'])
   end
 
   subject { sender }
 
   its(:name) { should eq('José Comprador') }
   its(:email) { should eq('comprador@uol.com.br') }
-  its(:phone) { should be_a_kind_of(PagSeguro::Notification::Phone) }
+  its(:phone) { should be_a_kind_of(PagSeguro::Transaction::Phone) }
 
   let(:xml_file) {
     "<sender>

@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     class Address
       attr_reader :address
 

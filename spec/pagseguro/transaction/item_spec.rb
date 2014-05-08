@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe PagSeguro::Notification::Item do
+describe PagSeguro::Transaction::Item do
   let(:item) do
-    PagSeguro::Notification::Item.new('0001', 'Notebook Prata',
+    PagSeguro::Transaction::Item.new('0001', 'Notebook Prata',
      '1', '24300.00')
   end
 

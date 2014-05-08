@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     class Items
       attr_reader :count
 

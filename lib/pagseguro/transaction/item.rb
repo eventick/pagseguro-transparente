@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     class Item
       attr_accessor :id, :description, :quantity, :amount
 

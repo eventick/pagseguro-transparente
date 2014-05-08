@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     class Shipping
       attr_reader :shipping
 

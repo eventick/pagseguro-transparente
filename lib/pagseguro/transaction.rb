@@ -1,5 +1,5 @@
 module PagSeguro
-  class Notification
+  class Transaction
     attr_reader :response
 
     def initialize(response)
