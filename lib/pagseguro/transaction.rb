@@ -30,6 +30,10 @@ module PagSeguro
       transaction['status']
     end
 
+    def cancellation_source
+      transaction['cancellationSource']
+    end
+
     def payment_method
       PaymentMethod.new(transaction['paymentMethod'])
     end
@@ -48,6 +52,10 @@ module PagSeguro
 
     def fee_amount
       transaction['feeAmount']
+    end
+
+    def escrow_end_date
+      transaction['escrowEndDate']
     end
 
     def net_amount

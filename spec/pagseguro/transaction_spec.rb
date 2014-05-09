@@ -24,6 +24,8 @@ describe PagSeguro::Transaction do
   its(:items) { should be_a_kind_of(PagSeguro::Transaction::Items) }
   its(:sender) { should be_a_kind_of(PagSeguro::Transaction::Sender) }
   its(:shipping) { should be_a_kind_of(PagSeguro::Transaction::Shipping) }
+  its(:escrow_end_date) { should eq('2011-02-05T15:46:12.000-02:00') }
+  its(:cancellation_source) { should eq('INTERNAL') }
 
   let(:xml_file) {
     "<transaction>
@@ -33,13 +35,15 @@ describe PagSeguro::Transaction do
         <reference>REF1234</reference>
         <type>1</type>
         <status>3</status>
-    <paymentLink>https://pagseguro.uol.com.br/checkout/imprimeBoleto.jhtml</paymentLink>
+        <paymentLink>https://pagseguro.uol.com.br/checkout/imprimeBoleto.jhtml</paymentLink>
         <grossAmount>49900.00</grossAmount>
         <discountAmount>0.00</discountAmount>
         <feeAmount>0.00</feeAmount>
         <netAmount>49900.50</netAmount>
         <extraAmount>0.00</extraAmount>
         <installmentCount>1</installmentCount>
+        <escrowEndDate>2011-02-05T15:46:12.000-02:00</escrowEndDate>
+        <cancellationSource>INTERNAL</cancellationSource>
     </transaction>"
   }
 end
