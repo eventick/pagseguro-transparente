@@ -64,6 +64,6 @@ describe PagSeguro::Transaction do
     }
 
     it { should_not be_valid}
-    its(:errors) { should eq( [ {"error" => { "code" => "53044", "message" => "credit card holder name invalid value: Flora"}} ]) }
+    its(:errors) { should eq( [ { "code" => "53044", "message" => "credit card holder name invalid value: Flora"} ]) }
   end
 end
