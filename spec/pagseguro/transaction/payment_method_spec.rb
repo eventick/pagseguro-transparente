@@ -10,6 +10,7 @@ describe PagSeguro::Transaction::PaymentMethod do
   subject { payment_method }
 
   its(:payment_type) { should eq('1') }
+  its(:payment_type_name) { should eq(:credit_card) }
   its(:payment_code) { should eq('101') }
 
   let(:xml_file) {

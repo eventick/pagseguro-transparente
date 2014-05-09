@@ -2,6 +2,9 @@ module PagSeguro
   class Transaction
     attr_reader :response
 
+    PAYMENT_STATUS = { '1' => :awaiting_payment, '2' => :pending, '3' => :paid,
+      '4' => :available, '5' => :in_dispute, '6' => :refunded, '7' => :canceled}
+
     def initialize(response)
       @response = response
     end
@@ -28,6 +31,10 @@ module PagSeguro
 
     def status
       transaction['status']
+    end
+
+    def status_name
+      PAYMENT_STATUS[status]
     end
 
     def cancellation_source

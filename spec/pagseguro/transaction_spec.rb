@@ -13,6 +13,7 @@ describe PagSeguro::Transaction do
   its(:reference) { should eq('REF1234') }
   its(:type) { should eq('1') }
   its(:status) { should eq('3') }
+  its(:status_name) { should eq(:paid) }
   its(:payment_link) { should eq('https://pagseguro.uol.com.br/checkout/imprimeBoleto.jhtml') }
   its(:gross_amount) { should eq('49900.00') }
   its(:discount_amount) { should eq("0.00") }
