@@ -1,6 +1,6 @@
 module PagSeguro
   class Transaction
-    attr_reader :response, :errors
+    attr_reader :response
 
     def initialize(response)
       @response = response
