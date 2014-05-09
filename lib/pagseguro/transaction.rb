@@ -1,6 +1,6 @@
 module PagSeguro
   class Transaction
-    attr_reader :response
+    attr_reader :response, :errors
 
     def initialize(response)
       @response = response
@@ -82,7 +82,16 @@ module PagSeguro
       Shipping.new(transaction['shipping'])
     end
 
+    def valid?
+      !transaction.blank?
+    end
+
+    def errors
+      [response['errors']].compact
+    end
+
     private
+
     def transaction
       response['transaction']
     end
