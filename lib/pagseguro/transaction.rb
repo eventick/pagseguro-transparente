@@ -89,7 +89,18 @@ module PagSeguro
       Shipping.new(transaction['shipping'])
     end
 
+    def valid?
+      !transaction.blank?
+    end
+
+    def errors
+      response['errors'] ||= {}
+
+      [response['errors']['error']].compact
+    end
+
     private
+
     def transaction
       response['transaction']
     end
