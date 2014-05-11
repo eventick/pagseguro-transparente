@@ -13,11 +13,24 @@ describe PagSeguro::Session do
 
   describe "#create" do
     subject { session.create  }
-    before do
-      stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/sessions").
-         with(body: "email=mail&token=token").to_return(status: 200)
+
+    context 'with default email and token' do
+      before do
+        stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/sessions").
+           with(body: "email=mail&token=token").to_return(status: 200)
+      end
+
+      it { should be_a_kind_of(PagSeguro::Session::Response) }
     end
 
-    it { should be_a_kind_of(PagSeguro::Session::Response) }
+    context 'with custom email and token' do
+      let(:session) { PagSeguro::Session.new('custom_email', 'custom_token') }
+      before do
+        stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/sessions").
+           with(body: "email=custom_email&token=custom_token").to_return(status: 200)
+      end
+
+      it { should be_a_kind_of(PagSeguro::Session::Response) }
+    end
   end
 end

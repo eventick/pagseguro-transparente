@@ -72,10 +72,12 @@ describe PagSeguro::Payment::Serializer do
     credit_card.billing_address = address
     credit_card
   end
+
   before do
-  PagSeguro.email = 'pagseguro@eventick.com.br'
-  PagSeguro.token = 'my_token'
+    PagSeguro.email = 'pagseguro@eventick.com.br'
+    PagSeguro.token = 'my_token'
   end
+
   let(:bank) { PagSeguro::Bank.new('bancodobrasil') }
 
   it { subject[:email].should eq('pagseguro@eventick.com.br') }

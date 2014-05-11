@@ -1,16 +1,16 @@
 module PagSeguro
   class Notification < Request
-    attr_accessor :code
+    attr_accessor :code, :type, :email, :token
 
-    attr_accessor :type
-
-    def initialize(code, type = nil)
+    def initialize(code, type = nil, email = nil, token = nil)
       @code = code
       @type = type
+      @email = email
+      @token = token
     end
 
     def transaction
-      PagSeguro::Transaction.new post("/transactions/notifications/#{code}")
+      PagSeguro::Transaction.new get("/transactions/notifications/#{code}", email, token)
     end
   end
 end

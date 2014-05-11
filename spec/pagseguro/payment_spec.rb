@@ -22,7 +22,6 @@ describe PagSeguro::Payment do
     payment
   end
 
-
   let(:document) { PagSeguro::Document.new('017.355.323-00') }
   let(:phone) {PagSeguro::Phone.new('11', '99999999') }
   let(:sender) do
