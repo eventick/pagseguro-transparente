@@ -21,8 +21,6 @@ module PagSeguro
 
     private
     def add_credencials(email, token, params)
-      #puts "email: #{email}"
-      #puts "token: #{token}"
       options = { body:
         {
           email: email || PagSeguro.email,
@@ -30,7 +28,6 @@ module PagSeguro
         }
       }
       options[:body].merge!(params)
-      #puts "options #{options}"
       options
     end
   end
