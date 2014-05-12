@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pagseguro-transparente (0.0.1)
+    pagseguro-transparente (0.0.2)
       activemodel
       httparty
       json
@@ -68,7 +68,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
-    tins (1.1.0)
+    tins (1.2.0)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     webmock (1.17.4)
