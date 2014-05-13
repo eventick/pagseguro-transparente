@@ -7,8 +7,12 @@ module PagSeguro
 
     base_uri "https://ws.pagseguro.uol.com.br/v2/"
 
-    def get(path, email, token, params = {})
-      options = add_credencials(email, token, params)
+    def get(path, email, token)
+      options = { query: {
+          email: email || PagSeguro.email,
+          token: token || PagSeguro.token
+        }
+      }
       self.class.get(path, options)
     end
 
