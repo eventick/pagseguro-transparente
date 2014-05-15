@@ -18,8 +18,8 @@ describe PagSeguro::Notification do
     context "with default credencials" do
       subject { notification.transaction  }
       before do
-        stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/766B9C-AD4B044B04DA-77742F5FA653-E1AB24").
-           with(body: "email=mail&token=token").to_return(status: 200)
+        stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/766B9C-AD4B044B04DA-77742F5FA653-E1AB24?email=mail&token=token").
+         to_return(:status => 200, :body => "", :headers => {})
       end
 
       it { should be_a_kind_of(PagSeguro::Transaction) }
@@ -31,8 +31,8 @@ describe PagSeguro::Notification do
       let(:notification) { PagSeguro::Notification.new(code, type, 'custom_email', 'custom_token') }
 
       before do
-        stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/766B9C-AD4B044B04DA-77742F5FA653-E1AB24").
-           with(body: "email=custom_email&token=custom_token").to_return(status: 200)
+        stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/766B9C-AD4B044B04DA-77742F5FA653-E1AB24?email=custom_email&token=custom_token").
+         to_return(:status => 200, :body => "", :headers => {})
       end
 
       it { should be_a_kind_of(PagSeguro::Transaction) }
