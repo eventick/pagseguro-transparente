@@ -10,7 +10,7 @@ module PagSeguro
     end
 
     def transaction
-      PagSeguro::Transaction.new get("/transactions/notifications/#{code}", email, token)
+      PagSeguro::Transaction.new get("/transactions/notifications/#{code}")
     end
   end
 end

@@ -22,15 +22,5 @@ describe PagSeguro::Session do
 
       it { should be_a_kind_of(PagSeguro::Session::Response) }
     end
-
-    context 'with custom email and token' do
-      let(:session) { PagSeguro::Session.new('custom_email', 'custom_token') }
-      before do
-        stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/sessions").
-           with(body: "email=custom_email&token=custom_token").to_return(status: 200)
-      end
-
-      it { should be_a_kind_of(PagSeguro::Session::Response) }
-    end
   end
 end

@@ -7,28 +7,28 @@ module PagSeguro
 
     base_uri "https://ws.pagseguro.uol.com.br/v2/"
 
-    def get(path, email, token)
+    def get(path)
       options = { query: {
-          email: email || PagSeguro.email,
-          token: token || PagSeguro.token
+          email: PagSeguro.email,
+          token: PagSeguro.token
         }
       }
       self.class.get(path, options)
     end
 
-    def post(path, email, token, params = {})
-      options = add_credencials(email, token, params)
+    def post(path, params = {})
+      options = add_credencials(params)
 
       response = self.class.post(path, options)
       response.parsed_response
     end
 
     private
-    def add_credencials(email, token, params)
+    def add_credencials(params)
       options = { body:
         {
-          email: email || PagSeguro.email,
-          token: token || PagSeguro.token
+          email: PagSeguro.email,
+          token: PagSeguro.token
         }
       }
       options[:body].merge!(params)

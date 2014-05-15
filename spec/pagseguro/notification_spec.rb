@@ -24,18 +24,5 @@ describe PagSeguro::Notification do
 
       it { should be_a_kind_of(PagSeguro::Transaction) }
     end
-
-    context "with custom credencials" do
-      subject { notification.transaction  }
-
-      let(:notification) { PagSeguro::Notification.new(code, type, 'custom_email', 'custom_token') }
-
-      before do
-        stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/766B9C-AD4B044B04DA-77742F5FA653-E1AB24?email=custom_email&token=custom_token").
-         to_return(:status => 200, :body => "", :headers => {})
-      end
-
-      it { should be_a_kind_of(PagSeguro::Transaction) }
-    end
   end
 end

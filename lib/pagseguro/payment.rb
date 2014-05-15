@@ -7,8 +7,6 @@ module PagSeguro
     validates_presence_of :credit_card, if: :paid_with_card?
     validates_inclusion_of :payment_method, in: %w(creditCard boleto eft)
 
-    attr_accessor :email, :token
-
     # Determines for which url PagSeguro will send the order related
     # notifications codes.
     # Optional. Any change happens in the transaction status, a new notification
@@ -64,12 +62,10 @@ module PagSeguro
     # Calls the PagSeguro web service and register this request for payment.
     def transaction
       params = Serializer.new(self).to_params
-      PagSeguro::Transaction.new post('/transactions', email, token, params)
+      PagSeguro::Transaction.new post('/transactions', params)
     end
 
     def initialize(options = {})
-      @email = options[:email]
-      @token = options[:token]
       @currency = "BRL"
       @payment_mode = 'default'
       @notification_url = options[:notification_url]
