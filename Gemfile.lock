@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pagseguro-transparente (0.0.2)
+    pagseguro-transparente (0.0.3)
       activemodel
       httparty
       json
@@ -38,12 +38,12 @@ GEM
     i18n (0.6.9)
     json (1.8.1)
     mime-types (2.2)
-    mini_portile (0.5.3)
+    mini_portile (0.6.0)
     minitest (5.3.3)
     multi_json (1.10.0)
     multi_xml (0.5.5)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     rake (10.3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)

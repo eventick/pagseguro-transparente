@@ -55,16 +55,34 @@ describe PagSeguro::Transaction do
   end
 
   context "unsuccessfull transaction" do
-    let(:xml_file) {
-      "<errors>
-        <error>
-          <code>53044</code>
-          <message>credit card holder name invalid value: Flora</message>
-          </error>
-        </errors>"
-    }
+    context "one error only" do
+      let(:xml_file) {
+        "<errors>
+          <error>
+            <code>53044</code>
+            <message>credit card holder name invalid value: Flora</message>
+            </error>
+          </errors>"
+      }
 
-    it { should_not be_valid}
-    its(:errors) { should eq( [ { "code" => "53044", "message" => "credit card holder name invalid value: Flora"} ]) }
+      it { should_not be_valid}
+      its(:errors) { should eq( [ { "code" => "53044", "message" => "credit card holder name invalid value: Flora"} ]) }
+    end
+
+    context "various errors" do
+      let(:xml_file) {
+        "<errors>
+            <error>
+              <code>53017</code><message>sender cpf invalid value: 01391039130</message>
+            </error>
+            <error>
+              <code>53015</code><message>sender name invalid value: Flora</message>
+            </error>
+          </errors>"
+      }
+
+      it { should_not be_valid}
+      its(:errors) { should eq( [ { "code" => "53017", "message" => "sender cpf invalid value: 01391039130"}, { "code" => "53015", "message" => "sender name invalid value: Flora"} ]) }
+    end
   end
 end
