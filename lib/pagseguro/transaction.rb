@@ -94,9 +94,9 @@ module PagSeguro
     end
 
     def errors
-      response['errors'] ||= {}
+      response['errors'] ||= {'error' => []}
 
-      [response['errors']['error']].compact
+      [response['errors']['error']].flatten
     end
 
     private
