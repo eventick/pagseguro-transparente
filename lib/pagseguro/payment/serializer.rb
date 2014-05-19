@@ -108,7 +108,7 @@ module PagSeguro
         raise InvalidInstallment, installment.errors.messages unless installment.valid?
 
         params[:installmentQuantity] = installment.quantity
-        params[:installmentValue] = installment.value
+        params[:installmentValue] = to_amount(installment.value)
       end
 
       def serialize_holder(holder)
