@@ -117,7 +117,7 @@ module PagSeguro
 
         params[:creditCardHolderName] = holder.name
         params[:creditCardHolderCPF] = holder.document.value
-        params[:creditCardHolderBirthDate] = holder.birthdate
+        params[:creditCardHolderBirthDate] = holder.birthdate.strftime("%d/%m/%Y")
         params[:creditCardHolderAreaCode] = holder.phone.area_code
         params[:creditCardHolderPhone] = holder.phone.number
       end
