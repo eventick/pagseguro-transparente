@@ -59,7 +59,7 @@ describe PagSeguro::Payment::Serializer do
   let(:installment) { PagSeguro::Installment.new('5', '125.22')}
 
   let(:holder) do
-    holder = PagSeguro::Holder.new('Jose Comprador', '27/10/1987')
+    holder = PagSeguro::Holder.new('Jose Comprador', Date.parse('1987-10-27') )
     holder.document = document
     holder.phone = phone
     holder

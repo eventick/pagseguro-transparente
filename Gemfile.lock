@@ -4,6 +4,7 @@ PATH
     pagseguro-transparente (0.0.5)
       activemodel
       httparty
+      i18n
       json
       nokogiri
 
