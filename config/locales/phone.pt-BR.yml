@@ -1,8 +1,0 @@
- pt-BR:
-   activemodel:
-     errors:
-       models:
-         pag_seguro/phone:
-           attributes:
-             number:
-               too_long: 'é muito longo (máximo: %{count} caracteres)'

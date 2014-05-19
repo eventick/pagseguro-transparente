@@ -1,0 +1,35 @@
+pt-BR:
+  errors:
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      inclusion: não está incluído na lista
+      exclusion: não está disponível
+      invalid: não é válido
+      confirmation: não é igual a %{attribute}
+      accepted: deve ser aceito
+      empty: não pode ficar vazio
+      blank: não pode ficar em branco
+      present: deve ficar em branco
+      too_long:
+        one: "é muito grande, deve ter no máximo 1 caractere"
+        other: "é muito grande, o tamanho máximo é de %{count} caracteres"
+      too_short:
+        one: "é muito pequeno, deve ter no mínimo 1 caractere"
+        other: "é muito pequeno, deve ter no mínimo %{count} characters"
+      wrong_length:
+        one: "está no tamnaho errado (deve ser 1 caractere)"
+        other: "está no tamnaho errado (deve ser %{count} caracteres)"
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      equal_to: deve ser igual a %{count}
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      other_than: deve ser outro que não %{count}
+      odd: deve ser ímpar
+      even: deve ser par
