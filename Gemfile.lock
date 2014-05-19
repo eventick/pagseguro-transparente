@@ -2,11 +2,11 @@ PATH
   remote: .
   specs:
     pagseguro-transparente (0.0.6)
-      activemodel (~> 4.1.1)
-      httparty (~> 0.13.1)
-      i18n (~> 0.6.9)
-      json (~> 1.8.1)
-      nokogiri (~> 1.6.2.1)
+      activemodel (~> 4.1)
+      httparty (~> 0.13)
+      i18n (~> 0.6)
+      json (~> 1.8)
+      nokogiri (~> 1.6)
 
 GEM
   remote: https://rubygems.org/
@@ -80,11 +80,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.6.1)
-  coveralls (~> 0.7.0)
+  bundler (~> 1.6)
+  coveralls (~> 0.7)
   pagseguro-transparente!
-  rake (~> 10.3.2)
-  rspec (~> 2.14.1)
-  shoulda-matchers (= 2.5.0)
-  thread_safe (= 0.2.0)
-  webmock (~> 1.18.0)
+  rake (~> 10.3)
+  rspec (~> 2.14)
+  shoulda-matchers (= 2.5)
+  thread_safe (~> 0.2)
+  webmock (~> 1.18)
