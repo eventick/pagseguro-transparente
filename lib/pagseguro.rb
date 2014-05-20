@@ -25,7 +25,6 @@ require "pagseguro/holder"
 require "pagseguro/address"
 require "pagseguro/shipping"
 require "pagseguro/installment"
-require "pagseguro/exceptions"
 
 I18n.enforce_available_locales = false
 I18n.load_path += ['locale/pt-BR.yml']

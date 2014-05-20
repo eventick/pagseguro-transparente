@@ -9,8 +9,6 @@ module PagSeguro
       end
 
       def to_params
-        raise InvalidTransaction, payment.errors.messages unless payment.valid?
-
         params[:email] = PagSeguro.email
         params[:token] = PagSeguro.token
 
@@ -46,7 +44,6 @@ module PagSeguro
 
       def serialize_shipping(shipping)
         return unless shipping
-        raise InvalidShipping, shipping.errors.messages unless shipping.valid?
 
         params[:shippingType] = shipping.type_id
         params[:shippingCost] = to_amount(shipping.cost)
@@ -56,7 +53,6 @@ module PagSeguro
 
       def serialize_item(item, index)
         return unless item
-        raise InvalidItem, item.errors.messages unless item.valid?
 
         params["itemId#{index}".to_sym] = item.id
         params["itemDescription#{index}".to_sym] = item.description
@@ -66,7 +62,6 @@ module PagSeguro
 
       def serialize_sender(sender)
         return unless sender
-        raise InvalidSender, sender.errors.messages unless sender.valid?
 
         params[:senderName] = sender.name
         params[:senderCPF] = sender.document.value
@@ -78,7 +73,6 @@ module PagSeguro
 
       def serialize_phone(phone)
         return unless phone
-        raise InvalidPhone, phone.errors.messages unless phone.valid?
 
         params[:senderAreaCode] = phone.area_code
         params[:senderPhone] = phone.number
@@ -86,14 +80,12 @@ module PagSeguro
 
       def serialize_bank(bank)
         return unless bank
-        raise InvalidBank, bank.errors.messages unless bank.valid?
 
         params[:bankName] = bank.name
       end
 
       def serialize_credit_card(credit_card)
         return unless credit_card
-        raise InvalidCreditCard, credit_card.errors.messages unless credit_card.valid?
 
         params[:creditCardToken] = credit_card.token
 
@@ -105,7 +97,6 @@ module PagSeguro
 
       def serialize_installment(installment)
         return unless installment
-        raise InvalidInstallment, installment.errors.messages unless installment.valid?
 
         params[:installmentQuantity] = installment.quantity
         params[:installmentValue] = to_amount(installment.value)
@@ -113,7 +104,6 @@ module PagSeguro
 
       def serialize_holder(holder)
         return unless holder
-        raise InvalidHolder, holder.errors.messages unless holder.valid?
 
         params[:creditCardHolderName] = holder.name
         params[:creditCardHolderCPF] = holder.document.value
@@ -124,7 +114,6 @@ module PagSeguro
 
       def serialize_address_shipping(address)
         return unless address
-        raise InvalidAddress, address.errors.messages unless address.valid?
 
         params[:shippingAddressCountry] = address.country
         params[:shippingAddressState] = address.state
@@ -138,7 +127,6 @@ module PagSeguro
 
       def serialize_address(address)
         return unless address
-        raise InvalidAddress, address.errors.messages unless address.valid?
 
         params[:billingAddressCountry] = address.country
         params[:billingAddressState] = address.state
