@@ -27,7 +27,7 @@ require "pagseguro/shipping"
 require "pagseguro/installment"
 
 I18n.enforce_available_locales = false
-I18n.load_path += ['locale/pt-BR.yml']
+I18n.load_path += Dir[File.expand_path('../../config/locales/*.yml',  __FILE__)]
 
 module PagSeguro
   class << self
