@@ -2,10 +2,11 @@ module PagSeguro
   class Payment
     class Serializer
       # The payment request that will be serialized.
-      attr_reader :payment
+      attr_reader :payment#, :params
 
       def initialize(payment)
         @payment = payment
+        @params = {}
       end
 
       def to_params
@@ -19,6 +20,12 @@ module PagSeguro
         params[:paymentMode] = payment.payment_mode
         params[:reference] = payment.reference
         params[:extraAmount] = payment.extra_amount
+
+        if payment.max_installments_no_interest
+          params[:paymentMethodGroup1] ='CREDIT_CARD'
+          params[:paymentMethodConfigKey1_1] ='MAX_INSTALLMENTS_NO_INTEREST'
+          params[:paymentMethodConfigValue1_1] = payment.max_installments_no_interest
+        end
 
         payment.items.each.with_index(1) do |item, index|
           serialize_item(item, index)

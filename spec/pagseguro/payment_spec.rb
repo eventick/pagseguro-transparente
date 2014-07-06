@@ -65,6 +65,7 @@ describe PagSeguro::Payment do
   it { should respond_to(:shipping) }
   it { should respond_to(:bank) }
   it { should respond_to(:credit_card) }
+  it { should respond_to(:max_installments_no_interest) }
 
   describe 'presence validations' do
     it { should validate_presence_of(:currency) }

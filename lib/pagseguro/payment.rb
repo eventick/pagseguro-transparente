@@ -49,6 +49,10 @@ module PagSeguro
 
     attr_accessor :extra_amount
 
+    # Set the max installments with no interest.
+    # Optional.
+    attr_accessor :max_installments_no_interest
+
     # Products/items in this payment request.
     def items
       @items ||= Items.new
