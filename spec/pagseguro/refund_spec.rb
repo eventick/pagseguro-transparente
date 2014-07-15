@@ -74,5 +74,29 @@ describe PagSeguro::Refund do
         end
       end
     end
+
+    context "unexpected response" do
+      subject { refund.errors }
+
+      before do
+        stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/transactions/refunds").
+         with(:body => "email=mail&token=token&transactionCode=766B9C-AD4B044B04DA-77742F5FA653-E1AB24").
+         to_return(:status => status, :body => "")
+      end
+
+      before { refund.request }
+
+      context '403 Forbbiden' do
+        let(:status) { 403 }
+
+        it { expect(refund.errors).to eq [ { "code" => "403", "message" => "Forbidden"} ] }
+      end
+
+      context '401 Unauthorized' do
+        let(:status) { 401 }
+
+        it { expect(refund.errors).to eq [ { "code" => "401", "message" => "Unkown Error"} ] }
+      end
+    end
   end
 end

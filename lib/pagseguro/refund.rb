@@ -1,22 +1,30 @@
 module PagSeguro
   class Refund < Request
-    attr_accessor :response
+    attr_accessor :request
 
     def initialize(transaction_code)
       @transaction_code = transaction_code
-      @response = {}
+      @request = {}
     end
 
     def request
-      @response = post("/transactions/refunds", transactionCode: @transaction_code)
+      @request = post("/transactions/refunds", transactionCode: @transaction_code)
 
-      @response['result'] == 'OK'
+      @request.response.code == '200'
     end
 
     def errors
-      @response['errors'] ||= {'error' => []}
-
-      [@response['errors']['error']].flatten
+      case @request.response.code
+      when '400'
+        errors = @request.parsed_response
+        [errors['errors']['error']].flatten
+      when '200'
+        []
+      when '403'
+        [{'code' => '403', 'message' => 'Forbidden'}]
+      else
+        [{'code' => @request.response.code.to_s, 'message' => 'Unkown Error'}]
+      end
     end
   end
 end
