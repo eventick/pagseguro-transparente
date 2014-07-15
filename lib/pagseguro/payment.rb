@@ -66,7 +66,7 @@ module PagSeguro
     # Calls the PagSeguro web service and register this request for payment.
     def transaction
       params = Serializer.new(self).to_params
-      PagSeguro::Transaction.new post('/transactions', params)
+      PagSeguro::Transaction.new post('/transactions', params).parsed_response
     end
 
     def initialize(options = {})
