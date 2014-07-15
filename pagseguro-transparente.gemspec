@@ -5,8 +5,8 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 1.9.3"
   spec.name                  = "pagseguro-transparente"
   spec.version               = PagSeguro::VERSION
-  spec.authors               = ["Cirdes Henrique"]
-  spec.email                 = ["cirdes@gmail.com"]
+  spec.authors               = ["Cirdes Henrique", "Bruno Luigi"]
+  spec.email                 = ["cirdes@gmail.com", "bruno.luigi@gmail.com"]
   spec.description           = "Integração com o novo checkout transparente do Pagseguro."
   spec.summary               = spec.description
   spec.homepage              = "https://github.com/eventick/pagseguro-transparente"

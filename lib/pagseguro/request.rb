@@ -19,8 +19,7 @@ module PagSeguro
     def post(path, params = {})
       options = add_credencials(params)
 
-      response = self.class.post(path, options)
-      response.parsed_response
+      self.class.post(path, options)
     end
 
     private
