@@ -25,6 +25,7 @@ require "pagseguro/holder"
 require "pagseguro/address"
 require "pagseguro/shipping"
 require "pagseguro/installment"
+require "pagseguro/refund"
 
 I18n.enforce_available_locales = false
 I18n.load_path += Dir[File.expand_path('../../config/locales/*.yml',  __FILE__)]
