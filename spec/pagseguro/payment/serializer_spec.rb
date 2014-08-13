@@ -135,4 +135,15 @@ describe PagSeguro::Payment::Serializer do
   it { subject[:paymentMethodGroup1].should eq('CREDIT_CARD') }
   it { subject[:paymentMethodConfigKey1_1].should eq('MAX_INSTALLMENTS_NO_INTEREST') }
   it { subject[:paymentMethodConfigValue1_1].should eq(6) }
+
+  context 'with bithdate null' do
+    let(:holder) do
+      holder = PagSeguro::Holder.new('Jose Comprador', nil )
+      holder.document = document
+      holder.phone = phone
+      holder
+    end
+
+    it { subject[:creditCardHolderBirthDate].should eq(nil) }
+  end
 end
