@@ -11,6 +11,8 @@ describe PagSeguro::Refund do
   before do
     PagSeguro.email = 'mail'
     PagSeguro.token = 'token'
+    PagSeguro.alt_email = 'alt_mail'
+    PagSeguro.alt_token = 'alt_token'
   end
 
   describe "#request" do
@@ -23,6 +25,18 @@ describe PagSeguro::Refund do
       before do
         stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/transactions/refunds").
          with(:body => "email=mail&token=token&transactionCode=766B9C-AD4B044B04DA-77742F5FA653-E1AB24").
+         to_return(:status => 200, :body => "<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?> <result>OK</result>", :headers => {'Content-Type' => 'application/xml;charset=ISO-8859-1'})
+      end
+
+      it { expect(subject).to be_true }
+    end
+
+    context "alternative successful refund" do
+      subject { refund.request('alternative') }
+
+      before do
+        stub_request(:post, "https://ws.pagseguro.uol.com.br/v2/transactions/refunds").
+         with(:body => "email=alt_mail&token=alt_token&transactionCode=766B9C-AD4B044B04DA-77742F5FA653-E1AB24").
          to_return(:status => 200, :body => "<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?> <result>OK</result>", :headers => {'Content-Type' => 'application/xml;charset=ISO-8859-1'})
       end
 

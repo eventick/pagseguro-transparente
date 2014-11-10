@@ -7,9 +7,8 @@ module PagSeguro
       @request = {}
     end
 
-    def request
-      @request = post("/transactions/refunds", transactionCode: @transaction_code)
-
+    def request(account = nil)
+      @request = post("/transactions/refunds", account, transactionCode: @transaction_code)
       @request.response.code == '200'
     end
 

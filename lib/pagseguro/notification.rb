@@ -9,8 +9,8 @@ module PagSeguro
       @token = token
     end
 
-    def transaction
-      PagSeguro::Transaction.new get("/transactions/notifications/#{code}")
+    def transaction(account = nil)
+      PagSeguro::Transaction.new get("/transactions/notifications/#{code}", account)
     end
   end
 end

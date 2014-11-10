@@ -1,7 +1,7 @@
 module PagSeguro
   class Session < Request
-    def create
-      Response.new post('/sessions').parsed_response
+    def create(account = nil)
+      Response.new post('/sessions', account).parsed_response
     end
   end
 end

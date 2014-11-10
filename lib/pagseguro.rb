@@ -33,11 +33,17 @@ I18n.load_path += Dir[File.expand_path('../../config/locales/*.yml',  __FILE__)]
 
 module PagSeguro
   class << self
-    # Primary e-mail associated with this account.
+    # Primary e-mail associated with the primary account.
     attr_accessor :email
 
-    # The API token associated with this account.
+    # The API token associated with primary account.
     attr_accessor :token
+
+    # Sencondary e-mail associated with secondary account.
+    attr_accessor :alt_email
+
+    # The API token associated with secondary account.
+    attr_accessor :alt_token
 
     # The PagSeguro environment.
     # Only +production+ for now.

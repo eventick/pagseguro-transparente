@@ -6,8 +6,8 @@ module PagSeguro
       @code = code
     end
 
-    def transaction
-      PagSeguro::Transaction.new get("/transactions/#{code}")
+    def transaction(account = nil)
+      PagSeguro::Transaction.new get("/transactions/#{code}", account)
     end
   end
 end
