@@ -81,8 +81,6 @@ describe PagSeguro::Payment::Serializer do
 
   let(:bank) { PagSeguro::Bank.new('bancodobrasil') }
 
-  it { subject[:email].should eq('pagseguro@eventick.com.br') }
-  it { subject[:token].should eq('my_token') }
   it { subject[:paymentMode].should eq('default') }
   it { subject[:paymentMethod].should eq('boleto') }
   it { subject[:currency].should eq('BRL') }

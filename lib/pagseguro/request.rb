@@ -19,7 +19,7 @@ module PagSeguro
     end
 
     private
-    def add_credencials(account, params = nil)
+    def add_credencials(account)
       if account == "alternative"
          { email: PagSeguro.alt_email, token: PagSeguro.alt_token }
       else

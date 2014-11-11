@@ -10,10 +10,6 @@ module PagSeguro
       end
 
       def to_params
-        params[:email] = PagSeguro.email
-        params[:token] = PagSeguro.token
-
-
         params[:notificationURL] = payment.notification_url
         params[:currency] = payment.currency
         params[:paymentMethod] = payment.payment_method
