@@ -48,6 +48,9 @@ module PagSeguro
     # The PagSeguro environment.
     # Only +production+ for now.
     attr_accessor :environment
+
+    # Timeout value in seconds for requests.
+    attr_accessor :timeout
   end
 
   self.environment = :production
