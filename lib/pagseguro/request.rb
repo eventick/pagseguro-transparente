@@ -15,6 +15,7 @@ module PagSeguro
     def post(path, account = "default", params = {})
       options = { body: add_credencials(account) }
       options[:body].merge!(params)
+      options[:timeout] = PagSeguro.timeout unless PagSeguro.timeout.blank?
       self.class.post(path, options)
     end
 

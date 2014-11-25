@@ -4,10 +4,12 @@ describe PagSeguro do
   before do
     PagSeguro.email = "EMAIL"
     PagSeguro.token = "TOKEN"
+    PagSeguro.timeout = 10
   end
 
   it { expect(PagSeguro.email).to eql("EMAIL") }
   it { expect(PagSeguro.token).to eql("TOKEN") }
+  it { expect(PagSeguro.timeout).to eql(10) }
 
   context "configuring library" do
     it "yields PagSeguro" do
