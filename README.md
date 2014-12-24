@@ -42,7 +42,7 @@ pagseguro_session = PagSeguro::Session.new
 ##Criando uma transação
 ~~~.ruby
 payment = PagSeguro::Payment.new(notification_url: 'www.eventick.com.br', payment_method: 'boleto', reference: '1')
-items = [PagSeguro::Item.new(1, 'Ingresso Teste', 2, 1)]
+items = [PagSeguro::Item.new(id: 1, description: 'Ingresso Teste', amount: 2, quantity: 1)]
 payment.items = items
 
 

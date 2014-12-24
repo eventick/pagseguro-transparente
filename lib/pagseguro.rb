@@ -53,13 +53,14 @@ module PagSeguro
     attr_accessor :timeout
   end
 
-  self.environment = :production
+  self.environment = :sandbox
 
   # Set the global configuration.
   #
   #   PagSeguro.configure do |config|
   #     config.email = "john@example.com"
   #     config.token = "abc"
+  #     config.environment = :sandbox
   #   end
   #
   def self.configure(&block)
