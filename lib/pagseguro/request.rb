@@ -5,7 +5,13 @@ module PagSeguro
     include HTTParty
     debug_output $stderr
 
-    base_uri environment_uri
+    base_uri "https://ws.pagseguro.uol.com.br/v2/"
+
+    def initialize
+      if PagSeguro.sandbox?
+        base_uri = "https://ws.sandbox.pagseguro.uol.com.br/v2/"
+      end
+    end
 
     def get(path, account = "default")
       options = { query: add_credencials(account) }
@@ -28,9 +34,5 @@ module PagSeguro
         end
       end
 
-      def environment_uri
-        return "https://ws.pagseguro.uol.com.br/v2/" if PagSeguro.environment == :production
-        "https://ws.sandbox.pagseguro.uol.com.br/v2/"
-      end
   end
 end

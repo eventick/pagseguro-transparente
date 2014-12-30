@@ -51,9 +51,17 @@ module PagSeguro
 
     # Timeout value in seconds for requests.
     attr_accessor :timeout
+
+    def sandbox?
+      self.environment == :sandbox
+    end
+
+    def production?
+      self.environment == :production
+    end
   end
 
-  self.environment = :sandbox
+  self.environment = :production
 
   # Set the global configuration.
   #

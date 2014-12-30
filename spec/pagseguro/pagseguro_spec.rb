@@ -22,4 +22,13 @@ describe PagSeguro do
   context "default settings" do
     it { expect(PagSeguro.environment).to eql(:production) }
   end
+
+  context ".production?" do
+    it { expect(PagSeguro).to be_production }
+  end
+
+  context ".sandbox?" do
+    before { PagSeguro.environment = :sandbox }
+    it { expect(PagSeguro).to be_sandbox }
+  end
 end
