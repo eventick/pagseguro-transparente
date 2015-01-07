@@ -5,14 +5,14 @@ module PagSeguro
     include HTTParty
     debug_output $stderr
 
-    base_uri "https://ws.pagseguro.uol.com.br/v2/"
-
     def get(path, account = "default")
+      self.class.base_uri PagSeguro.api_url
       options = { query: add_credencials(account) }
       self.class.get(path, options)
     end
 
     def post(path, account = "default", params = {})
+      self.class.base_uri PagSeguro.api_url
       options = { body: add_credencials(account) }
       options[:body].merge!(params)
       options[:timeout] = PagSeguro.timeout unless PagSeguro.timeout.blank?
