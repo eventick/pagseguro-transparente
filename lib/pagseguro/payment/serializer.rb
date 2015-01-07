@@ -67,11 +67,19 @@ module PagSeguro
         return unless sender
 
         params[:senderName] = sender.name
-        params[:senderCPF] = sender.document.value
         params[:senderEmail] =  sender.email
         params[:senderHash] =  sender.hash_id
 
+        serialize_document(sender.document)
         serialize_phone(sender.phone)
+      end
+
+      def serialize_document(document)
+        if document.cpf?
+          params[:senderCPF] = document.value
+        else
+          params[:senderCNPJ] = document.value
+        end
       end
 
       def serialize_phone(phone)
@@ -80,6 +88,7 @@ module PagSeguro
         params[:senderAreaCode] = phone.area_code
         params[:senderPhone] = phone.number
       end
+
 
       def serialize_bank(bank)
         return unless bank

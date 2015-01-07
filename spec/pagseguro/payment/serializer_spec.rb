@@ -144,4 +144,10 @@ describe PagSeguro::Payment::Serializer do
 
     it { subject[:creditCardHolderBirthDate].should eq(nil) }
   end
+
+  context 'with CNPJ' do
+    let(:document) { PagSeguro::Document.new('22111944785', 'CNPJ') }
+
+    it { subject[:senderCNPJ].should eq('22111944785') }
+  end
 end
