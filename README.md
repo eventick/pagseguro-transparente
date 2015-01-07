@@ -21,7 +21,7 @@ Rails >= 3.0
 
 Adicione a biblioteca ao arquivo Gemfile:
 ~~~.ruby
-gem "pagseguro-transparente", "~> 0.0.2"
+gem "pagseguro-transparente", "~> 0.2.3"
 ~~~
 * Ainda não publicada, é preciso baixar direto do Github.
 

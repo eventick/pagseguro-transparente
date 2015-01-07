@@ -52,12 +52,16 @@ module PagSeguro
     # Timeout value in seconds for requests.
     attr_accessor :timeout
 
-    def sandbox?
-      self.environment == :sandbox
+    def api_url
+      uris.fetch(environment)
     end
 
-    def production?
-      self.environment == :production
+    private
+    def uris
+      @uris ||= {
+        production: 'https://ws.pagseguro.uol.com.br/v2',
+        sandbox: 'https://ws.sandbox.pagseguro.uol.com.br/v2'
+      }
     end
   end
 

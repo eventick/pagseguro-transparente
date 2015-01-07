@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pagseguro-transparente (0.2.2)
+    pagseguro-transparente (0.2.3)
       activemodel
       httparty (~> 0.13)
       i18n (~> 0.6)

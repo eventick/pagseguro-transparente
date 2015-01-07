@@ -23,12 +23,14 @@ describe PagSeguro do
     it { expect(PagSeguro.environment).to eql(:production) }
   end
 
-  context ".production?" do
-    it { expect(PagSeguro).to be_production }
-  end
+  describe ".api_url" do
+    context ".production?" do
+      it { expect(PagSeguro.api_url).to eq('https://ws.pagseguro.uol.com.br/v2') }
+    end
 
-  context ".sandbox?" do
-    before { PagSeguro.environment = :sandbox }
-    it { expect(PagSeguro).to be_sandbox }
+    context ".sandbox?" do
+      before { PagSeguro.environment = :sandbox }
+      it { expect(PagSeguro.api_url).to eq('https://ws.sandbox.pagseguro.uol.com.br/v2') }
+    end
   end
 end
