@@ -19,7 +19,7 @@ describe PagSeguro::Payment::Serializer do
     payment.shipping = shipping
     payment.credit_card = credit_card
     payment.bank = bank
-    payment.max_installments_no_interest = 6
+    payment.max_installment_no_interest = 6
     payment.items = [PagSeguro::Item.new(id: '0001', description: 'Notebook Prata', amount: '24300.00', quantity: '1') ,
     PagSeguro::Item.new(id: '0002', description: 'Notebook Rosa', amount: '25600.00', quantity: '2') ]
     payment
@@ -130,9 +130,7 @@ describe PagSeguro::Payment::Serializer do
   it { subject[:itemAmount2].should eq('25600.00') }
   it { subject[:itemQuantity2].should eq('2') }
 
-  it { subject[:paymentMethodGroup1].should eq('CREDIT_CARD') }
-  it { subject[:paymentMethodConfigKey1_1].should eq('MAX_INSTALLMENTS_NO_INTEREST') }
-  it { subject[:paymentMethodConfigValue1_1].should eq(6) }
+  it { subject[:noInterestInstallmentQuantity].should eq(6) }
 
   context 'with bithdate null' do
     let(:holder) do
