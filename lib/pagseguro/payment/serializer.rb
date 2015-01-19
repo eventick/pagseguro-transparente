@@ -16,12 +16,7 @@ module PagSeguro
         params[:paymentMode] = payment.payment_mode
         params[:reference] = payment.reference
         params[:extraAmount] = payment.extra_amount
-
-        if payment.max_installments_no_interest
-          params[:paymentMethodGroup1] ='CREDIT_CARD'
-          params[:paymentMethodConfigKey1_1] ='MAX_INSTALLMENTS_NO_INTEREST'
-          params[:paymentMethodConfigValue1_1] = payment.max_installments_no_interest
-        end
+        params[:noInterestInstallmentQuantity] = payment.max_installment_no_interest
 
         payment.items.each.with_index(1) do |item, index|
           serialize_item(item, index)
