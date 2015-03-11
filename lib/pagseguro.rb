@@ -15,6 +15,7 @@ require "pagseguro/transaction/payment_method"
 require "pagseguro/transaction/phone"
 require "pagseguro/transaction/sender"
 require "pagseguro/transaction/shipping"
+require "pagseguro/transaction/creditor_fees"
 require "pagseguro/notification"
 require "pagseguro/query"
 require "pagseguro/sender"
@@ -52,15 +53,15 @@ module PagSeguro
     # Timeout value in seconds for requests.
     attr_accessor :timeout
 
-    def api_url
-      uris.fetch(environment)
+    def api_url(version)
+      uris.fetch(environment) + version
     end
 
     private
     def uris
       @uris ||= {
-        production: 'https://ws.pagseguro.uol.com.br/v2',
-        sandbox: 'https://ws.sandbox.pagseguro.uol.com.br/v2'
+        production: 'https://ws.pagseguro.uol.com.br/',
+        sandbox: 'https://ws.sandbox.pagseguro.uol.com.br/'
       }
     end
   end

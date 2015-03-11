@@ -28,7 +28,7 @@ describe PagSeguro::Refund do
          to_return(:status => 200, :body => "<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?> <result>OK</result>", :headers => {'Content-Type' => 'application/xml;charset=ISO-8859-1'})
       end
 
-      it { expect(subject).to be_true }
+      it { expect(subject).to be_truthy }
     end
 
     context "alternative successful refund" do
@@ -40,7 +40,7 @@ describe PagSeguro::Refund do
          to_return(:status => 200, :body => "<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?> <result>OK</result>", :headers => {'Content-Type' => 'application/xml;charset=ISO-8859-1'})
       end
 
-      it { expect(subject).to be_true }
+      it { expect(subject).to be_truthy }
     end
 
     context "unsuccessfull refund" do
@@ -60,7 +60,7 @@ describe PagSeguro::Refund do
         context "request return" do
           subject { refund.request }
 
-          it { expect(subject).to be_false }
+          it { expect(subject).to be_falsey }
         end
 
         context "error format" do
@@ -77,7 +77,7 @@ describe PagSeguro::Refund do
         context "request return" do
           subject { refund.request }
 
-          it { expect(subject).to be_false }
+          it { expect(subject).to be_falsey }
         end
 
         context "error format" do

@@ -23,6 +23,6 @@ describe PagSeguro::Item do
   end
 
   describe 'set default country' do
-    its(:quantity) { should eq(1) }
+    it { expect(subject.quantity).to eq(1) }
   end
 end
