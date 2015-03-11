@@ -18,7 +18,7 @@ describe PagSeguro::Query do
   describe "#transaction" do
     subject { query.transaction  }
     before do
-      stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/64C4CB1E-5FF2-4092-BE17-CACE271D789E?email=mail&token=token").
+      stub_request(:get, "https://ws.pagseguro.uol.com.br/v3/transactions/64C4CB1E-5FF2-4092-BE17-CACE271D789E?email=mail&token=token").
        to_return(:status => 200, :body => "", :headers => {})
     end
 
@@ -28,7 +28,7 @@ describe PagSeguro::Query do
   describe "with secondary credencials" do
     subject { query.transaction("alternative")  }
     before do
-      stub_request(:get, "https://ws.pagseguro.uol.com.br/v2/transactions/64C4CB1E-5FF2-4092-BE17-CACE271D789E?email=alt_mail&token=alt_token").
+      stub_request(:get, "https://ws.pagseguro.uol.com.br/v3/transactions/64C4CB1E-5FF2-4092-BE17-CACE271D789E?email=alt_mail&token=alt_token").
        to_return(:status => 200, :body => "", :headers => {})
     end
 

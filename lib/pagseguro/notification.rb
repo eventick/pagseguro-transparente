@@ -10,7 +10,7 @@ module PagSeguro
     end
 
     def transaction(account = nil)
-      PagSeguro::Transaction.new get("/transactions/notifications/#{code}", account)
+      PagSeguro::Transaction.new get("/transactions/notifications/#{code}", API_V3, account)
     end
   end
 end

@@ -14,7 +14,7 @@ describe PagSeguro::Document do
   end
 
   describe 'set default country' do
-    its(:type) { should eq('CPF') }
+    it { expect(subject.type).to eq('CPF') }
   end
 
   describe 'inclusion validations' do
@@ -24,12 +24,12 @@ describe PagSeguro::Document do
 
   describe '#cpf' do
     context 'with CPF' do
-      its(:cpf?) { should be_true }
+      it { expect(subject.cpf?).to be_truthy }
     end
 
     context 'with CNPJ' do
       let(:document) { PagSeguro::Document.new('017.345.345-00', 'CNPJ') }
-      its(:cpf?) { should be_false }
+      it { expect(subject.cpf?).to be_falsey }
     end
   end
 end

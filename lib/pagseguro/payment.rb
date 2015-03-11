@@ -66,7 +66,7 @@ module PagSeguro
     # Calls the PagSeguro web service and register this request for payment.
     def transaction(account = nil)
       params = Serializer.new(self).to_params
-      PagSeguro::Transaction.new post('/transactions', account, params).parsed_response
+      PagSeguro::Transaction.new post('/transactions', API_V2 ,account, params).parsed_response
     end
 
     def initialize(options = {})
@@ -80,10 +80,6 @@ module PagSeguro
     end
 
     private
-    def endpoint
-      PagSeguro.api_url("checkout")
-    end
-
     def paid_with_card?
       payment_method == "creditCard"
     end

@@ -30,6 +30,6 @@ describe PagSeguro::Address do
   end
 
   describe 'set default country' do
-    its(:country) { should eq('BRA') }
+    it { expect(subject.country).to eq('BRA') }
   end
 end

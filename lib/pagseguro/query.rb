@@ -7,7 +7,7 @@ module PagSeguro
     end
 
     def transaction(account = nil)
-      PagSeguro::Transaction.new get("/transactions/#{code}", account)
+      PagSeguro::Transaction.new get("/transactions/#{code}", API_V3,account)
     end
   end
 end

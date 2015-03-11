@@ -1,9 +1,14 @@
 module PagSeguro
   class Transaction
+    extend Forwardable
     attr_reader :response
 
+    def_delegators :creditor_fees, :installment_fee_amount,
+     :intermediation_rate_amount, :intermediation_fee_amount, :fee_amount
+
     PAYMENT_STATUS = { '1' => :awaiting_payment, '2' => :pending, '3' => :paid,
-      '4' => :available, '5' => :in_dispute, '6' => :refunded, '7' => :canceled}
+      '4' => :available, '5' => :in_dispute, '6' => :refunded, '7' => :canceled,
+      '8' => :chargeback, '9' => :plea }
 
     def initialize(response)
       @response = response
@@ -57,10 +62,6 @@ module PagSeguro
       transaction['discountAmount']
     end
 
-    def fee_amount
-      transaction['feeAmount']
-    end
-
     def escrow_end_date
       transaction['escrowEndDate']
     end
@@ -100,9 +101,12 @@ module PagSeguro
     end
 
     private
-
     def transaction
-      response['transaction']
+      @transaction ||= response['transaction']
+    end
+
+    def creditor_fees
+      @creditor_fees ||= CreditorFees.new(transaction['creditorFees'])
     end
   end
 end

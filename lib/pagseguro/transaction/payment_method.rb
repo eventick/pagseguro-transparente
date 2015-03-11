@@ -4,7 +4,7 @@ module PagSeguro
       attr_reader :payment_method
 
       PAYMENT_TYPE = { '1' => :credit_card, '2' => :boleto, '3' => :tef,
-        '4' => :pagseguro_balance, '5' => :io_paggo, '6' => :deposit }
+        '4' => :pagseguro_balance, '5' => :io_paggo, '7' => :deposit }
 
       def initialize(payment_method)
         @payment_method = payment_method
