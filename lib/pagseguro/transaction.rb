@@ -4,7 +4,7 @@ module PagSeguro
     attr_reader :response
 
     def_delegators :creditor_fees, :installment_fee_amount,
-     :intermediation_rate_amount, :intermediation_fee_amount, :fee_amount
+     :intermediation_rate_amount, :intermediation_fee_amount
 
     PAYMENT_STATUS = { '1' => :awaiting_payment, '2' => :pending, '3' => :paid,
       '4' => :available, '5' => :in_dispute, '6' => :refunded, '7' => :canceled,
@@ -98,6 +98,10 @@ module PagSeguro
       response['errors'] ||= {'error' => []}
 
       [response['errors']['error']].flatten
+    end
+
+    def fee_amount
+      transaction['feeAmount'] || creditor_fees.fee_amount
     end
 
     private

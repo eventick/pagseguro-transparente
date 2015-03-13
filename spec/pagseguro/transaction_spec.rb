@@ -78,6 +78,16 @@ describe PagSeguro::Transaction do
       its(:errors) { should eq( [ { "code" => "53044", "message" => "credit card holder name invalid value: Flora"} ]) }
     end
 
+    context 'with fee_amount' do
+      let(:xml_file) {
+        "<transaction>
+            <feeAmount>49.50</feeAmount>
+        </transaction>"
+      }
+
+      its(:fee_amount) { should eq("49.50") }
+    end
+
     context "various errors" do
       let(:xml_file) {
         "<errors>
