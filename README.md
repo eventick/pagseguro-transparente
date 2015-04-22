@@ -61,7 +61,7 @@ shipping.address = address
 
 payment.shipping = shipping
 
-response = payment.register
+response = payment.transaction
 
 response.payment_link
 ~~~
