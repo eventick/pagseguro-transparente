@@ -25,7 +25,7 @@ gem "pagseguro-transparente", "~> 1.0.1"
 ~~~
 
 
-Criar um initializer em config/initializer/pagseguro.rb
+Criar um initializer em ```config/initializer/pagseguro.rb```
 ~~~.ruby
 PagSeguro.configure do |config|
     config.email = "exemplo@pagseguro.com.br"
@@ -42,7 +42,7 @@ end
 * Obter a identificação do comprador
 * Efetuar o pagamento utilizando a API do Checkout Transparente
 
-*Lib Javascript fornecidade pelo PagSeguro
+```* Lib Javascript fornecidade pelo PagSeguro```
 
 ## Iniciando uma nova sessão
 ~~~.ruby
@@ -57,13 +57,13 @@ pagseguro_session_id = pagseguro_session.create.id
 payment = PagSeguro::Payment.new(notification_url: 'www.eventick.com.br/notify', payment_method: 'creditCard', reference: '1')
 ~~~
 
-#### Adiciando items
+#### Adicionando items
 ~~~.ruby
 items = [PagSeguro::Item.new(id: 1, description: 'Ticket 1', amount: 2, quantity: 1), PagSeguro::Item.new(id: 2, description: 'Ticket 2', amount: 2, quantity: 1)]
 payment.items = items
 ~~~
 
-#### Adiciando comprador
+#### Adicionando comprador
 ~~~.ruby
 phone = PagSeguro::Phone.new('11', '999999999')
 document = PagSeguro::Document.new('111111111111')
@@ -73,7 +73,7 @@ sender.document = document
 payment.sender = sender
 ~~~.ruby
 
-####Adiciando endereço do comprador ou endereço de cobrança para cartão de crédito
+#### Adicionando endereço do comprador ou endereço de cobrança para cartão de crédito
 ~~~.ruby
 address = PagSeguro::Address.new(postal_code: '01318002', street: 'AV BRIGADEIRO LUIS ANTONIO', number: '1892', complement: '112', district: 'Bela Vista', city: 'São Paulo', state: 'SP')
 shipping = PagSeguro::Shipping.new
@@ -81,7 +81,7 @@ shipping.address = address
 payment.shipping = shipping
 ~~~
 
-#### Adiciando informações do cartão
+#### Adicionando informações do cartão
 ~~~.ruby
 credit_card = PagSeguro::CreditCard.new(creditcard_token)
 credit_card.installment = PagSeguro::Installment.new(installment_quantity, installment_value)
@@ -100,10 +100,11 @@ payment.credit_card = credit_card
 transaction = payment.transaction
 ~~~
 
-Ao efetuar a transação, será retornado um objecto PagSeguro::Transaction que você poderá usar para atualizar o status da compra.
+Ao efetuar a transação, será retornado um objeto ```PagSeguro::Transaction``` que você poderá usar para atualizar o status da compra.
 
 ### Boleto
 Com o retorno da transação você pegará a url para imprimir o boleto.
+
 ~~~.ruby
 payment = PagSeguro::Payment.new(notification_url: 'www.eventick.com.br/notify', payment_method: 'boleto', reference: '1')
 transaction = payment.transaction
@@ -111,8 +112,8 @@ transaction.payment_link
 ~~~
 
 ### Débito bancário
-Você recebá a ulr para redirecionar o usuário ao banco.
-Valores possívels para os bancos são: bradesco itau bancodobrasil banrisul hsbc
+Você recebá a URL para redirecionar o usuário ao banco.
+Valores possívels para os bancos são: ```bradesco``` ```itau``` ```bancodobrasil``` ```banrisul``` ```hsbc```
 ~~~.ruby
 payment = PagSeguro::Payment.new(notification_url: 'www.eventick.com.br/notify', payment_method: 'eft', reference: '1')
 payment.bank = PagSeguro::Bank.new('bradesco')
@@ -130,7 +131,7 @@ A notification_url informada como parâmetro da transação, irá receber um POS
 transaction = PagSeguro::Notification.new(notification_code, 'transaction').transaction
 ~~~
 
-É possível verificar se a transação é uma transação válida, sem erros ou consultador o erros retornados pelo PagSeguro.
+É possível verificar se a transação é uma transação válida, sem erros ou consultar os erros retornados pelo PagSeguro.
 ~~~.ruby
 transaction.valid?
 transaction.errors
@@ -144,7 +145,7 @@ transaction = PagSeguro::Query.new(order_identifier).transaction
 ~~~
 
 ## PagSeguro::Transaction
-A API de notificação, a API de consulta e de pagamento retornam um objeto da classe PagSeguro::Transaction. Transaction responde aos seguintes métodos:
+A API de notificação, a API de consulta e de pagamento retornam um objeto da classe ```PagSeguro::Transaction. Transaction``` responde aos seguintes métodos:
 
 ~~~.ruby
 date, last_event_date, code,reference, type, status, status_name, cancellation_source, payment_method, payment_link, gross_amount, discount_amount, escrow_end_date, net_amount, extra_amount, installment_count, items, sender, shipping, valid?, errors, fee_amount
