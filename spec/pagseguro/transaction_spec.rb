@@ -3,7 +3,18 @@ require "spec_helper"
 describe PagSeguro::Transaction do
   let(:xml) { MultiXml.parse(xml_file) }
 
-  let(:xml_file) {
+  let(:sender) do
+    "<sender>
+      <name>José Comprador</name>
+      <email>comprador@uol.com.br</email>
+      <phone>
+        <areaCode>11</areaCode>
+        <number>56273440</number>
+      </phone>
+    </sender>"
+  end
+
+  let(:xml_file) do
     "<transaction>
         <date>2011-02-05T15:46:12.000-02:00</date>
         <lastEventDate>2011-02-15T17:39:14.000-03:00</lastEventDate>
@@ -24,8 +35,9 @@ describe PagSeguro::Transaction do
         <installmentCount>1</installmentCount>
         <escrowEndDate>2011-02-05T15:46:12.000-02:00</escrowEndDate>
         <cancellationSource>INTERNAL</cancellationSource>
+        #{sender}
     </transaction>"
-  }
+  end
 
   let(:response) { PagSeguro::Transaction.new(xml) }
 
@@ -61,6 +73,12 @@ describe PagSeguro::Transaction do
     it { expect(subject).to respond_to(:intermediation_rate_amount) }
     it { expect(subject).to respond_to(:intermediation_fee_amount) }
     it { expect(subject).to respond_to(:fee_amount) }
+  end
+
+  context "response without sender" do
+    let(:sender) { "" }
+
+    its(:sender) { should be_nil }
   end
 
   context "unsuccessfull transaction" do
