@@ -83,7 +83,7 @@ module PagSeguro
     end
 
     def sender
-      Sender.new(transaction['sender'])
+      Sender.new(transaction['sender']) if transaction['sender']
     end
 
     def shipping
